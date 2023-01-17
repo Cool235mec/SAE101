@@ -15,15 +15,9 @@ def print_graph(df):
 def print_specific(df, col):
     df[col].plot()
     mpl.show()
-    
-def print_each_column(df):
-    axes = mpl.subplot(nrows=3, ncols=2)
-    df["NO"].plot(ax=axes[0,0])
-    df["NO2"].plot(ax=axes[0,1])
-    df["O3"].plot(ax=axes[1,0])
-    df["NOX as NO2"].plot(ax=axes[1,1])
-    df["PM10"].plot(ax=axes[2,0])
-    df["PM2.5"].plot(ax=axes[2,1])
-    mpl.show(axes)
-    
-    
+
+def print_graph_with_limits(df, limits):
+    lim = pd.DataFrame(limits)
+    plot = df.plot()
+    limits.plot(style='--', ax=plot)
+    mpl.show(plot)
